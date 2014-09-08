@@ -42,6 +42,7 @@ if [ ! -f ${BUILD_DIR}/system.properties ]; then
 fi
 
 # install JDK
+set -x
 javaVersion=$(detect_java_version ${BUILD_DIR})
 echo -n "-----> Installing OpenJDK ${javaVersion}..."
 if ( java -version 2>&1 | grep ${javaVersion} ); then 
