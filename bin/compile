@@ -44,7 +44,11 @@ fi
 # install JDK
 javaVersion=$(detect_java_version ${BUILD_DIR})
 echo -n "-----> Installing OpenJDK ${javaVersion}..."
-install_java ${BUILD_DIR} ${javaVersion}
+if ( java -version 2>&1 | grep ${javaVersion} ); then 
+  echo i haz it;
+else
+  install_java ${BUILD_DIR} ${javaVersion}
+fi
 jdk_overlay ${BUILD_DIR}
 echo " done"
 
